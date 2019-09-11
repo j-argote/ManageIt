@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"><%= titleCol1 %></th>
+            <th scope="col"><%= titleCol2 %></th>
+            <th scope="col"><%= titleCol3 %></th>
+            <th scope="col"><%= titleCol4 %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (jobs.length > 0){ %>
+            <% for(var i=0; i < jobs.length; i++){ %>
+                <tr>
+                    <th scope="row"><%= i %></th>
+                    <td><%= jobs[i].jobnumber %></td>
+                    <td><%= jobs[i].jobaddress %></td>
+                    <td><%= jobs[i].datereceived %></td>
+                    <td><%= jobs[i].typeofjob %></td>
+                </tr>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>

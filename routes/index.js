@@ -14,15 +14,37 @@ router.post('/',(req,res)=>{
     var type_of_job = req.body.type_of_job;
 
     db.none("INSERT INTO jobs (jobnumber, jobaddress, datereceived, typeofjob) Values($1,$2,$3,$4)", [jobNumber, jobAddress, date_received, type_of_job])
+    
+    db.any('SELECT * FROM jobs')
+    .then((data)=>{
+        db.any('SELECT * FROM jobs')
+        .then((results)=>{
+            res.render('index',{
+                jobs: results,
+                pageTitle: 'ManageIt',
+                pageID: 'home',
+                jobs: data,
+                titleCol1: "Job Number",
+                titleCol2: "Job Address",
+                titleCol3: "Date Received",
+                titleCol4: "Type of Job"
+            })
+        })
+    })
 })
 
 router.get('/',(req,res)=>{
     db.any('SELECT * FROM jobs')
     .then((data)=>{
+        console.log(data[0].jobaddress)
         res.render('index',{
         pageTitle: 'ManageIt',
         pageID: 'home',
-        jobs: data
+        jobs: data,
+        titleCol1: "Job Number",
+        titleCol2: "Job Address",
+        titleCol3: "Date Received",
+        titleCol4: "Type of Job"
     })
     })
     

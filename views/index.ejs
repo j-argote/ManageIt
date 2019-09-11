@@ -13,14 +13,7 @@
     <div class="container">
         <% include partials/form.ejs %>
         
-        <% if (jobs.length > 0){ %>
-            <% for(var i=0; i < jobs.length; i++){ %>
-                <H2><%= jobs[i].jobnumber %></H2>
-                <H2><%= jobs[i].jobaddress %></H2>
-                <H2><%= jobs[i].datereceived %></H2>
-                <H2><%= jobs[i].typeofjob %></H2>
-            <% } %>
-        <% } %>
+        <% include partials/table.ejs %>
     </div>
     
 
