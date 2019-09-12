@@ -6,6 +6,7 @@ var db = require('../models/database');
 
 router.use(bodyParser.urlencoded({ extended: false }))
 
+// post new job data to database and populate table with new job 
 router.post('/',(req,res)=>{
     // console.log(req.body.jobnumber)
     var jobNumber = req.body.jobnumber;
@@ -36,7 +37,6 @@ router.post('/',(req,res)=>{
 router.get('/',(req,res)=>{
     db.any('SELECT * FROM jobs')
     .then((data)=>{
-        console.log(data[0].jobaddress)
         res.render('index',{
         pageTitle: 'ManageIt',
         pageID: 'home',
