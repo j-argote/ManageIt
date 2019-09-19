@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 var db = require('../models/database');
 
+//body-parser
 router.use(bodyParser.urlencoded({ extended: false }))
 
 // post new job data to database and populate table with new job 
